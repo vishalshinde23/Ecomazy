@@ -1,6 +1,8 @@
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../redux/Slices/CartSlice';
+import { BiSolidCartAdd } from "react-icons/bi";
+import { MdRemoveShoppingCart } from "react-icons/md";
 
 const Product = ({ post }) => {
   const cart = useSelector((state) => state.cart);
@@ -17,11 +19,11 @@ const Product = ({ post }) => {
   };
 
   return (
-    <div className="relative m-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-teal-700 shadow-md hover:scale-105 transition-transform duration-300 ease-in-out p-4">
+    <div className="relative  ml-[-3px] md:m-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-teal-700 shadow-md hover:scale-105 transition-transform duration-300 ease-in-out ">
       {/* Product Image */}
-      <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+      <a className="relative mx-3 mt-3 flex h-40 md:h-60 overflow-hidden rounded-xl" href="#">
         <img
-          className="object-cover w-full"
+          className="object-cover object-contain w-full"
           src={post.image}
           alt={post.title}
         />
@@ -29,11 +31,11 @@ const Product = ({ post }) => {
       </a>
 
       {/* Product Details */}
-      <div className="mt-4 px-2 pb-2">
+      <div className="mt-2 md:mt-4 px-2 pb-2">
         <a href="#">
           <h5 className="text-md tracking-tight text-slate-900 truncate">{post.title}</h5>
         </a>
-        <div className="mt-2 mb-5 flex items-center justify-between">
+        <div className="mt-2 mb-2 md:mb-5 flex items-center justify-between">
           <p>
             <span className="text-xl text-white  dark:text-white">${post.price}</span>
             <span className="text-sm text-white  dark:text-white line-through">$699</span>
@@ -56,17 +58,17 @@ const Product = ({ post }) => {
         <div className="flex items-center justify-center w-full  rounded-md  text-center">
           {cart.some((p) => p.id === post.id) ? (
             <button
-              className="bg-white  dark:bg-white 0 font-semibold hover:bg-gray-700 px-4 py-2 rounded-md"
+              className="bg-white mt-[-4px] w-full flex items-center justify-center mx-auto   dark:bg-white 0 font-semibold hover:bg-gray-700 px-4 py-2 rounded-md"
               onClick={removeFromCart}
             >
-              Remove from Cart
+              < MdRemoveShoppingCart className="items-center w-6 h-6" />
             </button>
           ) : (
             <button
-              className="bg-white  dark:bg-white font-semibold hover:bg-gray-700 px-4 py-2 rounded-md"
+              className="bg-white mt-[-4px] w-full flex items-center justify-center mx-auto  dark:bg-white font-semibold hover:bg-gray-700 px-4 py-2 rounded-md"
               onClick={addToCart}
             >
-              Add to Cart
+             <BiSolidCartAdd className="items-center w-6 h-6" />
             </button>
           )}
         </div>

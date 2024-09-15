@@ -25,7 +25,7 @@ const CartItem = ({ item, itemIndex }) => {
       {/* Details */}
       <div className="flex-grow">
         <h1 className="text-lg font-bold text-gray-800">{item.title}</h1>
-        <p className="text-gray-600 text-sm mb-2">{item.description.trim(0,4)}</p>
+        <p className="text-gray-600 text-sm mb-2">{item.description.split(' ').slice(0, 10).join(' ') + '...'}</p>
         <div className="flex justify-between items-center">
           <p className="text-xl font-bold text-gray-900">${item.price}</p>
           <div
